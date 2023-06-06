@@ -3,7 +3,7 @@ using Domain.Entities;
 using Repository.Interfaces;
 using Service.Services.DTOs.Banner;
 using Service.Services.DTOs.Comment;
-using Service.Services.DTOs.Movflix;
+using Service.Services.DTOs;
 using Service.Services.Interfaces;
 using System;
 using System.Collections.Generic;

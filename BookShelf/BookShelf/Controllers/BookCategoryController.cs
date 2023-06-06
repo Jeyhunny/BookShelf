@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Service.Services.DTOs.Movie;
+using Service.Services.DTOs;
 using Service.Services.DTOs.MovieCategory;
 using Service.Services.Interfaces;
 using System.ComponentModel.DataAnnotations;
@@ -10,9 +10,9 @@ namespace BookShelf.Controllers
 {
     public class BookCategoryController : AppController
     {
-        private readonly IMovieCategoryService _categoryService;
+        private readonly IBookCategoryService _categoryService;
 
-        public BookCategoryController(IMovieCategoryService categoryService)
+        public BookCategoryController(IBookCategoryService categoryService)
         {
             _categoryService = categoryService;
         }
@@ -20,7 +20,7 @@ namespace BookShelf.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
 
-        public async Task<IActionResult> Create([FromBody] MovieCategoryCreateDto movieCategoryCreateDto)
+        public async Task<IActionResult> Create([FromBody] BookCategoryCreateDto movieCategoryCreateDto)
         {
             await _categoryService.CreateAsync(movieCategoryCreateDto);
 
@@ -30,7 +30,7 @@ namespace BookShelf.Controllers
         [HttpPut]
         [Route("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update([FromRoute][Required] int id, MovieCategoryUpdateDto movieCategoryUpdateDto)
+        public async Task<IActionResult> Update([FromRoute][Required] int id, BookCategoryUpdateDto movieCategoryUpdateDto)
         {
             try
             {

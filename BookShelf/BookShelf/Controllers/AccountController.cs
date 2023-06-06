@@ -1,8 +1,10 @@
 ﻿using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using NETCore.MailKit.Core;
 using Service.Services.DTOs.AppUser;
 using Service.Services.Interfaces;
+using IEmailService = Service.Services.Interfaces.IEmailService;
 
 namespace BookShelf.Controllers
 {

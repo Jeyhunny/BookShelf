@@ -7,15 +7,15 @@ namespace BookShelf.Controllers
 {
     public class BookCommentController : AppController
     {
-        private readonly IMovieCommentService _commentService;
+        private readonly IBookCommentService _commentService;
 
-        public BookCommentController(IMovieCommentService commentService)
+        public BookCommentController(IBookCommentService commentService)
         {
             _commentService = commentService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] MovieCommentCreateDto commentCreateDto)
+        public async Task<IActionResult> Create([FromBody] BookCommentCreateDto commentCreateDto)
         {
             await _commentService.CreateAsync(commentCreateDto);
 

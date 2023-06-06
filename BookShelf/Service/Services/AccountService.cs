@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
 using Domain.Entities;
+using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-
+using NETCore.MailKit.Core;
 using Service.Services.DTOs.AppUser;
 using Service.Services.Interfaces;
 using System;
@@ -13,6 +14,8 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using IEmailService = Service.Services.Interfaces.IEmailService;
+using ITokenService = Service.Services.Interfaces.ITokenService;
 
 namespace Service.Services
 {

@@ -13,13 +13,13 @@ namespace Repository.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new MovflixConfiguration());
+            modelBuilder.ApplyConfiguration(new BookShelfConfiguration());
             modelBuilder.ApplyConfiguration(new BlogConfiguration());
             modelBuilder.ApplyConfiguration(new BlogImageConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
-            modelBuilder.ApplyConfiguration(new MovieConfiguration());
-            modelBuilder.ApplyConfiguration(new MovieCategoryConfiguration());
-            modelBuilder.ApplyConfiguration(new MovieCommentConfiguration());
+            modelBuilder.ApplyConfiguration(new BookConfiguration());
+            modelBuilder.ApplyConfiguration(new BookCategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new BookCommentConfiguration());
             modelBuilder.ApplyConfiguration(new ContactCongiguration());
             modelBuilder.ApplyConfiguration(new BannerConfiguration());
             modelBuilder.ApplyConfiguration(new ServiceConfiguration());

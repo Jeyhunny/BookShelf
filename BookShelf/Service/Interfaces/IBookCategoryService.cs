@@ -5,11 +5,11 @@ namespace Service.Services.Interfaces
 {
     public interface IBookCategoryService
     {
-        Task CreateAsync(MovieCategoryCreateDto movieCategoryCreateDto);
-        Task<List<MovieCategoryListDto>> GetAllAsync();
+        Task CreateAsync(BookCategoryCreateDto movieCategoryCreateDto);
+        Task<List<BookCategoryListDto>> GetAllAsync();
         Task DeleteAsync(int id);
         Task SoftDeleteAsync(int id);
-        Task UpdateAsync(int id, MovieCategoryUpdateDto movieCategoryUpdateDto);
+        Task UpdateAsync(int id, BookCategoryUpdateDto movieCategoryUpdateDto);
         Task<MovieCategory> GetByIdAsync(int id);
     }
 }

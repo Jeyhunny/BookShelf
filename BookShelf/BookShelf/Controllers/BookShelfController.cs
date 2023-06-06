@@ -7,9 +7,9 @@ namespace BookShelf.Controllers
 {
     public class BookShelfController : AppController
     {
-        private readonly IMovflixService _movflixService;
+        private readonly IBookShelfService _movflixService;
 
-        public BookShelfController(IMovflixService movflixService)
+        public BookShelfController(IBookShelfService movflixService)
         {
             _movflixService = movflixService;
         }
@@ -21,7 +21,7 @@ namespace BookShelf.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] MovflixCreateDto movflixCreateDto)
+        public async Task<IActionResult> Create([FromBody] BookShelfCreateDto movflixCreateDto)
         {
             await _movflixService.CreateAsync(movflixCreateDto);
             return Ok();
@@ -29,7 +29,7 @@ namespace BookShelf.Controllers
 
         [HttpPost]
         [Route("{id}")]
-        public async Task<IActionResult> Update([FromRoute][Required] int id, MovflixUpdateDto movflixUpdateDto)
+        public async Task<IActionResult> Update([FromRoute][Required] int id, BookShelfUpdateDto movflixUpdateDto)
         {
             await _movflixService.UpdateAsync(id, movflixUpdateDto);
             return Ok(movflixUpdateDto);

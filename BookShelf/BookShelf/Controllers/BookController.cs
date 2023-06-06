@@ -10,9 +10,9 @@ namespace BookShelf.Controllers
 {
     public class BookController : AppController
     {
-        private readonly IMovieService _movieService;
+        private readonly IBookService _movieService;
 
-        public BookController(IMovieService movieService)
+        public BookController(IBookService movieService)
         {
             _movieService = movieService;
         }
@@ -20,7 +20,7 @@ namespace BookShelf.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
 
-        public async Task<IActionResult> Create([FromBody] MovieCreateDto movieCreateDto)
+        public async Task<IActionResult> Create([FromBody] BookCreateDto movieCreateDto)
         {
             await _movieService.CreateAsync(movieCreateDto);
 
@@ -30,7 +30,7 @@ namespace BookShelf.Controllers
         [HttpPut]
         [Route("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update([FromRoute][Required] int id, MovieUpdateDto movieUpdateDto)
+        public async Task<IActionResult> Update([FromRoute][Required] int id, BookUpdateDto movieUpdateDto)
         {
             try
             {

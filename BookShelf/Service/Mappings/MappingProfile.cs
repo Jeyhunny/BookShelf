@@ -19,9 +19,9 @@ namespace Service.Services.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<MovflixCreateDto, Movflix>().ReverseMap();
-            CreateMap<MovflixUpdateDto, Movflix>().ReverseMap();
-            CreateMap<MovflixListDto, Movflix>().ReverseMap();
+            CreateMap<BookShelfCreateDto, Movflix>().ReverseMap();
+            CreateMap<BookShelfUpdateDto, Movflix>().ReverseMap();
+            CreateMap<BookShelfListDto, Movflix>().ReverseMap();
 
             CreateMap<BlogCreateDto, Blog>().ReverseMap();
             CreateMap<BlogUpdateDto, Blog>().ReverseMap();
@@ -31,8 +31,8 @@ namespace Service.Services.Mappings
             CreateMap<CommentCreateDto, Comment>().ReverseMap();
             CreateMap<CommentListDto, Comment>().ReverseMap();
 
-            CreateMap<MovieCommentCreateDto, MovieComment>().ReverseMap();
-            CreateMap<MovieCommentListDto, MovieComment>().ReverseMap();
+            CreateMap<BookCommentCreateDto, MovieComment>().ReverseMap();
+            CreateMap<BookCommentListDto, MovieComment>().ReverseMap();
 
             CreateMap<ContactListDto, Contact>().ReverseMap();
             CreateMap<ContactUpdateDto, Contact>().ReverseMap();

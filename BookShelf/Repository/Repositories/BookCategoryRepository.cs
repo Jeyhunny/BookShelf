@@ -5,7 +5,7 @@ using Repository.Interfaces;
 
 namespace Repository
 {
-    public class BookCategoryRepository : Repository<MovieCategory>, IMovieCategoryRepository
+    public class BookCategoryRepository : Repository<MovieCategory>, IBookCategoryRepository
     {
 
         private readonly AppDbContext _context;
