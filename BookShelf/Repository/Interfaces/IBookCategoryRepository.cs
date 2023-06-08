@@ -2,8 +2,8 @@
 
 namespace Repository.Interfaces
 {
-    public interface IBookCategoryRepository : IRepository<MovieCategory>
+    public interface IBookCategoryRepository : IRepository<BookCategory>
     {
-        Task<List<MovieCategory>> GetAllCategories();
+        Task<List<BookCategory>> GetAllCategories();
     }
 }

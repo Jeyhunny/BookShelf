@@ -10,6 +10,6 @@ namespace Service.Services.Interfaces
         Task DeleteAsync(int id);
         Task SoftDeleteAsync(int id);
         Task UpdateAsync(int id, BookCategoryUpdateDto movieCategoryUpdateDto);
-        Task<MovieCategory> GetByIdAsync(int id);
+        Task<BookCategory> GetByIdAsync(int id);
     }
 }

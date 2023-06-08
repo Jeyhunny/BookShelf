@@ -2,9 +2,9 @@
 
 namespace Domain.Entities
 {
-    public class MovieCategory : BaseEntity
+    public class BookCategory : BaseEntity
     {
         public string? Name { get; set; }
-        public List<Movie>? Movies { get; set; }
+        public List<Book>? Books { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Domain.Entities;
-using Service.Services.DTOs.Movflix;
+using Service.Services.DTOs.BookShelf;
 
 namespace Service.Services.Interfaces
 {
@@ -10,6 +10,6 @@ namespace Service.Services.Interfaces
         Task DeleteAsync(int id);
         Task SoftDeleteAsync(int id);
         Task UpdateAsync(int id, BookShelfUpdateDto movflixUpdateDto);
-        Task<Movflix> GetByIdAsync(int id);
+        Task<BookShelf> GetByIdAsync(int id);
     }
 }

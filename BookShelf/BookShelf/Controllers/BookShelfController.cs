@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Service.Services.DTOs.Movflix;
+using Service.Services.DTOs.BookShelf;
 using Service.Services.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,32 +7,32 @@ namespace BookShelf.Controllers
 {
     public class BookShelfController : AppController
     {
-        private readonly IBookShelfService _movflixService;
+        private readonly IBookShelfService _bookShelfService;
 
-        public BookShelfController(IBookShelfService movflixService)
+        public BookShelfController(IBookShelfService bookShelfService)
         {
-            _movflixService = movflixService;
+            _bookShelfService = bookShelfService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _movflixService.GetAllAsync());
+            return Ok(await _bookShelfService.GetAllAsync());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] BookShelfCreateDto movflixCreateDto)
+        public async Task<IActionResult> Create([FromBody] BookShelfCreateDto bookShelfCreateDto)
         {
-            await _movflixService.CreateAsync(movflixCreateDto);
+            await _bookShelfService.CreateAsync(bookShelfCreateDto);
             return Ok();
         }
 
         [HttpPost]
         [Route("{id}")]
-        public async Task<IActionResult> Update([FromRoute][Required] int id, BookShelfUpdateDto movflixUpdateDto)
+        public async Task<IActionResult> Update([FromRoute][Required] int id, BookShelfUpdateDto bookShelfUpdateDto)
         {
-            await _movflixService.UpdateAsync(id, movflixUpdateDto);
-            return Ok(movflixUpdateDto);
+            await _bookShelfService.UpdateAsync(id, bookShelfUpdateDto);
+            return Ok(bookShelfUpdateDto);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Service.Services.DTOs.Movflix
+﻿namespace Service.Services.DTOs.BookShelf
 {
     public class BookShelfListDto
     {

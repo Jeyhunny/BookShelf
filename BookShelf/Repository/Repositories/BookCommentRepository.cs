@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class BookCommentRepository : Repository<MovieComment>, IBookCommentRepository
+    public class BookCommentRepository : Repository<BookComment>, IBookCommentRepository
     {
         private readonly AppDbContext _context;
-        private readonly DbSet<MovieComment> _entities;
+        private readonly DbSet<BookComment> _entities;
         public BookCommentRepository(AppDbContext context) : base(context)
         {
             _context = context;
-            _entities = _context.Set<MovieComment>();
+            _entities = _context.Set<BookComment>();
         }
     }
 }

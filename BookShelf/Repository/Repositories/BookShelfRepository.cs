@@ -4,9 +4,9 @@ using Repository.Interfaces;
 
 namespace Repository
 {
-    public class MovlixRepository : Repository<Movflix>, IBookRepository
+    public class BookShelfRepository : Repository<BookShelf>, IBookShelfRepository
     {
-        public MovlixRepository(AppDbContext context) : base(context) { }
+        public BookShelfRepository(AppDbContext context) : base(context) { }
 
     }
 }

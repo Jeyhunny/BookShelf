@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Domain.Configurations
 {
-    public class BookShelfConfiguration : IEntityTypeConfiguration<Movflix>
+    public class BookShelfConfiguration : IEntityTypeConfiguration<BookShelf>
     {
-        public void Configure(EntityTypeBuilder<Movflix> builder)
+        public void Configure(EntityTypeBuilder<BookShelf> builder)
         {
 
             builder.Property(m => m.CreateDate).HasDefaultValue(DateTime.UtcNow);

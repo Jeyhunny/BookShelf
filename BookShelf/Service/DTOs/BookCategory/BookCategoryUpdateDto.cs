@@ -1,4 +1,4 @@
-﻿namespace Service.Services.DTOs.MovieCategory
+﻿namespace Service.Services.DTOs.BookCategory
 {
     public class BookCategoryUpdateDto
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.Services.DTOs.Movie
+namespace Service.Services.DTOs.Book
 {
     public class BookRateDto
     {

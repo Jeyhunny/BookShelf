@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Domain.Configurations
 {
-    public class BookCategoryConfiguration : IEntityTypeConfiguration<MovieCategory>
+    public class BookCategoryConfiguration : IEntityTypeConfiguration<BookCategory>
     {
-        public void Configure(EntityTypeBuilder<MovieCategory> builder)
+        public void Configure(EntityTypeBuilder<BookCategory> builder)
         {
             builder.Property(m => m.Name).IsRequired();
 

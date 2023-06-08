@@ -1,61 +1,61 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Repository.Interfaces;
-using Service.Services.DTOs.Movie;
+using Service.Services.DTOs.Book;
 using Service.Services.Interfaces;
 using System.Runtime.InteropServices;
 
 namespace Service.Services
 {
-    public class MovieService : IBookService
+    public class BookService : IBookService
     {
-        private readonly IMovieRepository _repo;
+        private readonly IBookRepository _repo;
         private readonly IMapper _mapper;
 
-        public MovieService(IMovieRepository repo, IMapper mapper)
+        public BookService(IBookRepository repo, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;
         }
 
-        public async Task CreateAsync(BookCreateDto movieCreateDto)
+        public async Task CreateAsync(BookCreateDto bookCreateDto)
         {
-            var mappedData = _mapper.Map<Movie>(movieCreateDto);
+            var mappedData = _mapper.Map<Book>(bookCreateDto);
             await _repo.CreateAsync(mappedData);
         }
 
         public async Task DeleteAsync(int id)
         {
-            var movie = await _repo.GetAsync(id);
+            var book = await _repo.GetAsync(id);
 
-            await _repo.DeleteAsync(movie);
+            await _repo.DeleteAsync(book);
         }
 
         public async Task<List<BookListDto>> GetAllAsync()
         {
-            var movieList = await _repo.GetAllMoviesWithCategories();
-            return _mapper.Map<List<BookListDto>>(movieList);
+            var bookList = await _repo.GetAllBooksWithCategories();
+            return _mapper.Map<List<BookListDto>>(bookList);
         }
 
         public async Task<BookGetDto> GetByIdAsync(int id)
         {
-            var mappedMovie = _mapper.Map<BookGetDto>(await _repo.GetMovieById(id));
+            var mappedBook = _mapper.Map<BookGetDto>(await _repo.GetBookById(id));
             
            
-            return mappedMovie;
+            return mappedBook;
         }
 
         public async Task<List<BookListDto>> SearchAsync(string? searchText)
         {
-            List<Movie> searchDatas = new();
+            List<Book> searchDatas = new();
 
             if (searchText != null)
             {
-                searchDatas = await _repo.GetMoviesBySearch(searchText);
+                searchDatas = await _repo.GetBooksBySearch(searchText);
             }
             else
             {
-                searchDatas = await _repo.GetAllMoviesWithCategories();
+                searchDatas = await _repo.GetAllBooksWithCategories();
             }
 
             return _mapper.Map<List<BookListDto>>(searchDatas);
@@ -63,18 +63,18 @@ namespace Service.Services
 
         public async Task SoftDeleteAsync(int id)
         {
-            var movie = await _repo.GetAsync(id);
+            var book = await _repo.GetAsync(id);
 
-            await _repo.SoftDeleteAsync(movie);
+            await _repo.SoftDeleteAsync(book);
         }
 
-        public async Task UpdateAsync(int id, BookUpdateDto movieUpdateDto)
+        public async Task UpdateAsync(int id, BookUpdateDto bookUpdateDto)
         {
-            var dbMovie = await _repo.GetAsync(id);
+            var dbBook = await _repo.GetAsync(id);
 
-            _mapper.Map(movieUpdateDto, dbMovie);
+            _mapper.Map(bookUpdateDto, dbBook);
 
-            await _repo.UpdateAsync(dbMovie);
+            await _repo.UpdateAsync(dbBook);
         }
 
     
@@ -85,36 +85,36 @@ namespace Service.Services
             
         }
 
-        public async Task<List<BookListDto>> GetMoviesByCategoryAsync(string? category)
+        public async Task<List<BookListDto>> GetBooksByCategoryAsync(string? category)
         {
-            var dbMovies = await _repo.GetMoviesByCategory(category);
+            var dbMovies = await _repo.GetBooksByCategory(category);
 
             var mappedMovies = _mapper.Map<List<BookListDto>>(dbMovies);
 
             return mappedMovies;
         }
 
-        public async Task<List<BookListDto>> GetMoviesDesOrderAsync()
+        public async Task<List<BookListDto>> GetBooksDesOrderAsync()
         {
-            var dbMovies = await _repo.GetMoviesDescOrder();
+            var dbMovies = await _repo.GetBooksDescOrder();
 
             var mappedMovies = _mapper.Map<List<BookListDto>>(dbMovies);
 
             return mappedMovies;
         }
 
-        public async Task<List<BookListDto>> GetMoviesRateOrderAsync()
+        public async Task<List<BookListDto>> GetBooksRateOrderAsync()
         {
-            var dbMovies = await _repo.GetMoviesRateDesc();
+            var dbMovies = await _repo.GetBooksRateDesc();
 
             var mappedMovies = _mapper.Map<List<BookListDto>>(dbMovies);
 
             return mappedMovies;
         }
 
-        public async Task<List<BookListDto>> RelatedMoviesAsync(int id)
+        public async Task<List<BookListDto>> RelatedBooksAsync(int id)
         {
-            var dbMovies = await _repo.RelatedMovies(id);
+            var dbMovies = await _repo.RelatedBooks(id);
 
             var mappedMovies = _mapper.Map<List<BookListDto>>(dbMovies);
 

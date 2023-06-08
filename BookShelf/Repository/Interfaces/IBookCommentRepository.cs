@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Interfaces
 {
-    public interface IBookCommentRepository : IRepository<MovieComment> 
+    public interface IBookCommentRepository : IRepository<BookComment> 
     {
     }
 }

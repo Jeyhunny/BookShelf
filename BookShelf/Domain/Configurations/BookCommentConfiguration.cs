@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Domain.Configurations
 {
-    public class BookCommentConfiguration : IEntityTypeConfiguration<MovieComment>
+    public class BookCommentConfiguration : IEntityTypeConfiguration<BookComment>
     {
-        public void Configure(EntityTypeBuilder<MovieComment> builder)
+        public void Configure(EntityTypeBuilder<BookComment> builder)
         {
             builder.Property(m => m.SoftDeleted).HasDefaultValue(false);
             builder.Property(m => m.CreateDate).HasDefaultValue(DateTime.UtcNow.ToLongDateString());

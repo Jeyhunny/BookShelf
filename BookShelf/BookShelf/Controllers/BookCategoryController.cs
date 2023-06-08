@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Service.Services.DTOs;
-using Service.Services.DTOs.MovieCategory;
+using Service.Services.DTOs.Book;
+using Service.Services.DTOs.BookCategory;
 using Service.Services.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
@@ -20,7 +20,7 @@ namespace BookShelf.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
 
-        public async Task<IActionResult> Create([FromBody] BookCategoryCreateDto movieCategoryCreateDto)
+        public async Task<IActionResult> Create([FromBody] BookCategoryCreateDto bookCategoryCreateDto)
         {
             await _categoryService.CreateAsync(movieCategoryCreateDto);
 

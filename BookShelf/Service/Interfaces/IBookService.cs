@@ -1,5 +1,5 @@
 ﻿using Domain.Entities;
-using Service.Services.DTOs.Movie;
+using Service.Services.DTOs.Book;
 
 namespace Service.Services.Interfaces
 {
@@ -12,10 +12,10 @@ namespace Service.Services.Interfaces
         Task UpdateAsync(int id, BookUpdateDto movieUpdateDto);
         Task<BookGetDto> GetByIdAsync(int id);
         Task<List<BookListDto>> SearchAsync(string? searchText);
-        Task<List<BookListDto>> GetMoviesByCategoryAsync(string? category);
-        Task<List<BookListDto>> RelatedMoviesAsync(int id);
-        Task<List<BookListDto>> GetMoviesDesOrderAsync();
-        Task<List<BookListDto>> GetMoviesRateOrderAsync();
+        Task<List<BookListDto>> GetBooksByCategoryAsync(string? category);
+        Task<List<BookListDto>> RelatedBooksAsync(int id);
+        Task<List<BookListDto>> GetBooksDesOrderAsync();
+        Task<List<BookListDto>> GetBooksRateOrderAsync();
         Task RateAsync(int id, float rate);
     }
 }

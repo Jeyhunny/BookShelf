@@ -2,7 +2,7 @@
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Repository.Interfaces;
-using Service.Services.DTOs.MovieCategory;
+using Service.Services.DTOs.BookCategory;
 using Service.Services.Interfaces;
 
 namespace Service.Services
@@ -20,18 +20,18 @@ namespace Service.Services
            
         }
 
-        public async Task CreateAsync(BookCategoryCreateDto movieCategoryCreateDto)
+        public async Task CreateAsync(BookCategoryCreateDto bookCategoryCreateDto)
         {
-            var mappedData = _mapper.Map<MovieCategory>(movieCategoryCreateDto);
+            var mappedData = _mapper.Map<BookCategory>(bookCategoryCreateDto);
             await _repo.CreateAsync(mappedData);
            
         }
 
         public async Task DeleteAsync(int id)
         {
-            var movieCategory = await _repo.GetAsync(id);
+            var bookCategory = await _repo.GetAsync(id);
 
-            await _repo.DeleteAsync(movieCategory);
+            await _repo.DeleteAsync(bookCategory);
         }
 
         public async Task<List<BookCategoryListDto>> GetAllAsync()
@@ -42,27 +42,27 @@ namespace Service.Services
             return result;
         }
 
-        public async Task<MovieCategory> GetByIdAsync(int id)
+        public async Task<BookCategory> GetByIdAsync(int id)
         {
             return (await _repo.GetAsync(id));
         }
 
         public async Task SoftDeleteAsync(int id)
         {
-            var movieCategory = await _repo.GetAsync(id);
+            var bookCategory = await _repo.GetAsync(id);
 
-            await _repo.SoftDeleteAsync(movieCategory);
+            await _repo.SoftDeleteAsync(bookCategory);
 
 
         }
 
-        public async Task UpdateAsync(int id, BookCategoryUpdateDto movieCategoryUpdateDto)
+        public async Task UpdateAsync(int id, BookCategoryUpdateDto bookCategoryUpdateDto)
         {
-            var dbMovieCategory = await _repo.GetAsync(id);
+            var dbBookCategory = await _repo.GetAsync(id);
 
-            _mapper.Map(movieCategoryUpdateDto, dbMovieCategory);
+            _mapper.Map(bookCategoryUpdateDto, dbBookCategory);
 
-            await _repo.UpdateAsync(dbMovieCategory);
+            await _repo.UpdateAsync(dbBookCategory);
         }
     }
 }

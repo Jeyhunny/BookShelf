@@ -19,9 +19,9 @@ namespace Service.Services.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<BookShelfCreateDto, Movflix>().ReverseMap();
-            CreateMap<BookShelfUpdateDto, Movflix>().ReverseMap();
-            CreateMap<BookShelfListDto, Movflix>().ReverseMap();
+            CreateMap<BookShelfCreateDto, BookShelf>().ReverseMap();
+            CreateMap<BookShelfUpdateDto, BookShelf>().ReverseMap();
+            CreateMap<BookShelfListDto, BookShelf>().ReverseMap();
 
             CreateMap<BlogCreateDto, Blog>().ReverseMap();
             CreateMap<BlogUpdateDto, Blog>().ReverseMap();
@@ -31,8 +31,8 @@ namespace Service.Services.Mappings
             CreateMap<CommentCreateDto, Comment>().ReverseMap();
             CreateMap<CommentListDto, Comment>().ReverseMap();
 
-            CreateMap<BookCommentCreateDto, MovieComment>().ReverseMap();
-            CreateMap<BookCommentListDto, MovieComment>().ReverseMap();
+            CreateMap<BookCommentCreateDto, BookComment>().ReverseMap();
+            CreateMap<BookCommentListDto, BookComment>().ReverseMap();
 
             CreateMap<ContactListDto, Contact>().ReverseMap();
             CreateMap<ContactUpdateDto, Contact>().ReverseMap();
@@ -61,9 +61,9 @@ namespace Service.Services.Mappings
             CreateMap<BookGetDto, Movie>().ReverseMap();
 
 
-            CreateMap<BookCategoryCreateDto, MovieCategory>().ReverseMap();
-            CreateMap<BookCategoryUpdateDto, MovieCategory>().ReverseMap();            
-            CreateMap<BookCategoryListDto, MovieCategory>().ReverseMap();
+            CreateMap<BookCategoryCreateDto, BookCategory>().ReverseMap();
+            CreateMap<BookCategoryUpdateDto, BookCategory>().ReverseMap();            
+            CreateMap<BookCategoryListDto, BookCategory>().ReverseMap();
             
 
             CreateMap<BlogImageListDto, BlogImage>().ReverseMap();

@@ -2,11 +2,11 @@
 
 namespace Domain.Entities
 {
-    public class MovieComment : BaseEntity
+    public class BookComment : BaseEntity
     {
         public string By { get; set; }
         public string Context { get; set; }
         public int MovieId { get; set; }
-        public Movie? Movie { get; set; }
+        public Book? Movie { get; set; }
     }
 }

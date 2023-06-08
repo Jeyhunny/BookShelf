@@ -1,4 +1,4 @@
-﻿namespace Service.Services.DTOs.Movie
+﻿namespace Service.Services.DTOs.Book
 {
     public class BookUpdateDto
     {
@@ -8,6 +8,6 @@
         public int Length { get; set; }
         public int ReleaseYear { get; set; }
         public string Country { get; set; }
-        public int MovieCategoryId { get; set; }
+        public int BookCategoryId { get; set; }
     }
 }

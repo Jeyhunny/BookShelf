@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class Movflix : BaseEntity
+    public class BookShelf : BaseEntity
     {
         public byte[] Image { get; set; }
     }

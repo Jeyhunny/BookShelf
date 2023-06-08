@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Services.DTOs.Blog;
-using Service.Services.DTOs.Movie;
+using Service.Services.DTOs.Book;
 using Service.Services.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
@@ -10,11 +10,11 @@ namespace BookShelf.Controllers
 {
     public class BookController : AppController
     {
-        private readonly IBookService _movieService;
+        private readonly IBookService _bookService;
 
-        public BookController(IBookService movieService)
+        public BookController(IBookService bookService)
         {
-            _movieService = movieService;
+            _bookService = bookService;
         }
 
         [HttpPost]
@@ -22,7 +22,7 @@ namespace BookShelf.Controllers
 
         public async Task<IActionResult> Create([FromBody] BookCreateDto movieCreateDto)
         {
-            await _movieService.CreateAsync(movieCreateDto);
+            await _bookService.CreateAsync(movieCreateDto);
 
             return Ok();
         }
@@ -30,13 +30,13 @@ namespace BookShelf.Controllers
         [HttpPut]
         [Route("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update([FromRoute][Required] int id, BookUpdateDto movieUpdateDto)
+        public async Task<IActionResult> Update([FromRoute][Required] int id, BookUpdateDto bookUpdateDto)
         {
             try
             {
-                await _movieService.UpdateAsync(id, movieUpdateDto);
+                await _bookService.UpdateAsync(id, bookUpdateDto);
 
-                return Ok(movieUpdateDto);
+                return Ok(bookUpdateDto);
             }
             catch (NullReferenceException)
             {
@@ -52,7 +52,7 @@ namespace BookShelf.Controllers
         {
             try
             {
-                await _movieService.DeleteAsync(id);
+                await _bookService.DeleteAsync(id);
                 return Ok();
             }
             catch (NullReferenceException)
@@ -67,7 +67,7 @@ namespace BookShelf.Controllers
         {
             try
             {
-                await _movieService.SoftDeleteAsync(id);
+                await _bookService.SoftDeleteAsync(id);
                 return Ok();
             }
             catch (NullReferenceException)
@@ -80,7 +80,7 @@ namespace BookShelf.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _movieService.GetAllAsync());
+            return Ok(await _bookService.GetAllAsync());
         }
 
         [HttpGet]
@@ -88,7 +88,7 @@ namespace BookShelf.Controllers
         {
             try
             {
-                return Ok(await _movieService.GetByIdAsync(id));
+                return Ok(await _bookService.GetByIdAsync(id));
             }
             catch (NullReferenceException)
             {
@@ -99,40 +99,40 @@ namespace BookShelf.Controllers
         [HttpGet]
         public async Task<IActionResult> Search(string? search)
         {
-            return Ok(await _movieService.SearchAsync(search));
+            return Ok(await _bookService.SearchAsync(search));
         }
 
         [HttpPost]        
         public async Task<IActionResult> Rate([Required] int id, [FromQuery]float rate)
         {
-           await _movieService.RateAsync(id, rate);         
+           await _bookService.RateAsync(id, rate);         
 
             return Ok();
         }
 
         [HttpGet]
    
-        public async Task<IActionResult> GetMoviesByCategory([FromQuery] string category)
+        public async Task<IActionResult> GetBooksByCategory([FromQuery] string category)
         {       
-            return Ok(await _movieService.GetMoviesByCategoryAsync(category));
+            return Ok(await _bookService.GetBooksByCategoryAsync(category));
         }
 
         [HttpGet]
-        public async Task<IActionResult> RelatedMovies([FromQuery] int id)
+        public async Task<IActionResult> RelatedBooks([FromQuery] int id)
         {
-            return Ok(await _movieService.RelatedMoviesAsync(id));
+            return Ok(await _bookService.RelatedBooksAsync(id));
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetMoviesDescOrder()
+        public async Task<IActionResult> GetBooksDescOrder()
         {
-            return Ok(await _movieService.GetMoviesDesOrderAsync());
+            return Ok(await _bookService.GetBooksDesOrderAsync());
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetMoviesRateOrder()
+        public async Task<IActionResult> GetBooksRateOrder()
         {
-            return Ok(await _movieService.GetMoviesRateOrderAsync());
+            return Ok(await _bookService.GetBooksRateOrderAsync());
         }
     }
 }

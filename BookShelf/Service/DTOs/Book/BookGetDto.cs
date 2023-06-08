@@ -1,13 +1,13 @@
 ﻿using Service.Services.DTOs.Comment;
-using Service.Services.DTOs.MovieCategory;
-using Service.Services.DTOs.MovieComment;
+using Service.Services.DTOs.BookCategory;
+using Service.Services.DTOs.BookComment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.Services.DTOs.Movie
+namespace Service.Services.DTOs.Book
 {
     public class BookGetDto
     {
@@ -19,7 +19,7 @@ namespace Service.Services.DTOs.Movie
         public int Length { get; set; }
         public string? Country { get; set; }
         public int ReleaseYear { get; set; }
-        public BookCategoryListDto? MovieCategory { get; set; }
+        public BookCategoryListDto? BookCategory { get; set; }
         public List<BookCommentListDto>? Comments { get; set; }
 
 

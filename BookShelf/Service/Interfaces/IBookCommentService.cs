@@ -1,5 +1,5 @@
 ﻿using Service.Services.DTOs.Comment;
-using Service.Services.DTOs.MovieComment;
+using Service.Services.DTOs.BookComment;
 using System;
 using System.Collections.Generic;
 using System.Linq;

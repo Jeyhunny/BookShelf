@@ -17,7 +17,7 @@ namespace Service.Services.DTOs.Blog
         public string? CreateDate { get; set; }
         public byte[]? Photo { get; set; }
 
-        //public List<BlogImageListDto>? BlogImages { get; set; }
+        
         public List<CommentListDto>? Comments { get; set; }
     }
 }

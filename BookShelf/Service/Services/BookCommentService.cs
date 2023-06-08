@@ -2,7 +2,7 @@
 using Domain.Entities;
 using Repository.Interfaces;
 using Service.Services.DTOs.Comment;
-using Service.Services.DTOs.MovieComment;
+using Service.Services.DTOs.BookComment;
 using Service.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace Service.Services
 
         public async Task CreateAsync(BookCommentCreateDto commentCreateDto)
         {
-            var mappedComment = _mapper.Map<MovieComment>(commentCreateDto);
+            var mappedComment = _mapper.Map<BookComment>(commentCreateDto);
             await _repo.CreateAsync(mappedComment);
         }
     }

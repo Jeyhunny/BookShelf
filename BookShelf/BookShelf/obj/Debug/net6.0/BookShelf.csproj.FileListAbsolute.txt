@@ -97,3 +97,4 @@ C:\Users\Acer\Desktop\Developer\Final_BackEnd\BookShelf\BookShelf\obj\Debug\net6
 C:\Users\Acer\Desktop\Developer\Final_BackEnd\BookShelf\BookShelf\obj\Debug\net6.0\BookShelf.pdb
 C:\Users\Acer\Desktop\Developer\Final_BackEnd\BookShelf\BookShelf\obj\Debug\net6.0\BookShelf.genruntimeconfig.cache
 C:\Users\Acer\Desktop\Developer\Final_BackEnd\BookShelf\BookShelf\obj\Debug\net6.0\ref\BookShelf.dll
+C:\Users\Acer\Desktop\Developer\Final_BackEnd\BookShelf\BookShelf\obj\Debug\net6.0\BookShelf.MvcApplicationPartsAssemblyInfo.cs

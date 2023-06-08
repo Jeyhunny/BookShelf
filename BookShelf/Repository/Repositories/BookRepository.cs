@@ -5,54 +5,54 @@ using Repository.Interfaces;
 
 namespace Repository
 {
-    public class BookRepository : Repository<Movie>, IMovieRepository
+    public class BookRepository : Repository<Book>, IBookRepository
     {
         private readonly AppDbContext _context;
-        private readonly DbSet<Movie> _entities;
+        private readonly DbSet<Book> _entities;
         public BookRepository(AppDbContext context) : base(context)
         {
             _context = context;
-            _entities = _context.Set<Movie>();
+            _entities = _context.Set<Book>();
         }
 
-        public async Task<List<Movie>> GetAllMoviesWithCategories()
+        public async Task<List<Book>> GetAllBooksWithCategories()
         {
-            var movies = await _entities
+            var books = await _entities
                 .Where(m => m.SoftDeleted == false)
-                .Include(m => m.MovieCategory)
+                .Include(m => m.Category)
                 .ToListAsync();
-            return movies;
+            return books;
         }
 
 
-        public async Task<Movie> GetMovieById(int? id)
+        public async Task<Book> GetBookById(int? id)
         {
             if (id == null) throw new ArgumentNullException();
 
-            var movie = await _entities
-                .Include(m => m.MovieCategory)
+            var Book = await _entities
+                .Include(m => m.BookCategoryId)
                 .Include(m => m.Comments)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (movie == null) throw new NullReferenceException();
+            if (Book == null) throw new NullReferenceException();
 
-            return movie;
+            return Book;
         }
 
-        public async Task<List<Movie>> GetMoviesBySearch(string? searchText)
+        public async Task<List<Book>> GetBooksBySearch(string? searchText)
         {
-            var searchMovie = await
+            var searchBooks = await
                  _entities
                  .Where(m => m.Name.Contains(searchText))
-                 .Include(m => m.MovieCategory)
+                 .Include(m => m.BookCategoryId)
                  .ToListAsync();
 
-            if (searchMovie is null) throw new NullReferenceException();
+            if (searchBooks is null) throw new NullReferenceException();
 
-            return searchMovie;
+            return searchBooks;
         }
 
-        public async Task RateMovie(int id, float rate)
+        public async Task RateBooks(int id, float rate)
         {
             var movie = await _entities.FirstOrDefaultAsync(m => m.Id == id);
 
@@ -62,13 +62,13 @@ namespace Repository
            
         }
 
-        public async Task<List<Movie>> GetMoviesByCategory(string category)
+        public async Task<List<Book>> GetBooksByCategory(string category)
         {
             if (category is null) throw new NullReferenceException();
 
             var result = await _entities
-                .Include(m => m.MovieCategory)
-                .Where(m => m.MovieCategory.Name == category)
+                .Include(m => m.BookCategoryId)
+                .Where(m => m.Category.Name == category)
                 .Take(10)
                 .ToListAsync();
 
@@ -77,24 +77,24 @@ namespace Repository
             return result;                
         }
 
-        public async Task<List<Movie>> RelatedMovies(int id)
+        public async Task<List<Book>> RelatedBooks(int id)
         {
-            var movie = await _entities.Include(m => m.MovieCategory)
+            var books= await _entities.Include(m => m.BookCategory)
                 .Where(m => m.Id == id).FirstOrDefaultAsync();
 
-            var movies = await _entities.Include(m => m.MovieCategory)
-                .Where(m => m.MovieCategoryId == movie.MovieCategoryId)
+            var book = await _entities.Include(m => m.BookCategory)
+                .Where(m => m.BookCategoryId == books.BookCategoryId)
                 .ToListAsync();
 
-            return movies;              
+            return book;              
 
 
         }
 
-        public async Task<List<Movie>> GetMoviesDescOrder()
+        public async Task<List<Book>> GetBooksDescOrder()
         {
             var result = await _entities
-                .Include(m => m.MovieCategory)
+                .Include(m => m.BookCategory)
                 .OrderByDescending(m => m.Id)
                 .Take(8)
                 .ToListAsync();
@@ -104,7 +104,7 @@ namespace Repository
             return result;
         }
 
-        public async Task<List<Movie>> GetMoviesRateDesc()
+        public async Task<List<Movie>> GetBooksRateDesc()
         {
             var result = await _entities
                 .Include(m => m.MovieCategory)
